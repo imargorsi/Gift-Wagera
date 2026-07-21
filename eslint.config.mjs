@@ -41,13 +41,7 @@ const eslintConfig = defineConfig([
   { files: ["**/*.ts", "**/*.tsx"], rules: { "no-undef": "off" } },
   // Prettier LAST: disables formatting rules that would conflict.
   eslintConfigPrettier,
-  globalIgnores([
-    ".next/**",
-    "out/**",
-    "build/**",
-    "next-env.d.ts",
-    "components/ui/**",
-  ]),
+  globalIgnores([".next/**", "out/**", "build/**", "next-env.d.ts"]),
 ]);
 
 export default eslintConfig;

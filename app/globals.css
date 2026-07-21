@@ -1,41 +1,215 @@
 @import "tailwindcss";
 
+/*
+  Gift Wagera design tokens — hex values live ONLY here.
+  Components must use CSS variables / Tailwind theme utilities.
+*/
+
 :root {
-  --background: #faf8f5;
-  --foreground: #1c1917;
-  --primary: #7c2d12;
-  --primary-foreground: #fafaf9;
-  --secondary: #e7e5e4;
-  --accent: #b45309;
-  --muted: #f5f5f4;
-  --muted-foreground: #78716c;
-  --border: #e7e5e4;
-  --input: #e7e5e4;
+  /* Brand palette (from design system) */
+  --color-brand-primary: #d2691e;
+  --color-brand-secondary: #f4a460;
+  --color-brand-tertiary: #8b4513;
+  --color-neutral: #fff9f5;
+
+  /* Surfaces */
+  --bg-main: var(--color-neutral);
+  --bg-card: #ffffff;
+  --bg-card-muted: #f5f0eb;
+  --bg-input: #ffffff;
+  --bg-hover: color-mix(in srgb, var(--color-brand-tertiary) 6%, white);
+  --bg-selected: color-mix(in srgb, var(--color-brand-primary) 12%, white);
+  --bg-inverse: #1a1a1a;
+
+  /* Borders */
+  --border: #e8e0d8;
+  --border-strong: #1a1a1a;
+
+  /* Text */
+  --text-primary: #1a1a1a;
+  --text-secondary: #5c4033;
+  --text-muted: #8a7a6e;
+  --text-placeholder: #a8988c;
+  --text-disabled: #c4b8ae;
+  --text-on-brand: #ffffff;
+  --text-on-inverse: #ffffff;
+
+  /* Brand aliases */
+  --brand: var(--color-brand-primary);
+  --brand-secondary: var(--color-brand-secondary);
+  --brand-tertiary: var(--color-brand-tertiary);
+
+  /* Buttons */
+  --btn-primary-bg: var(--color-brand-primary);
+  --btn-primary-bg-hover: color-mix(
+    in srgb,
+    var(--color-brand-primary) 88%,
+    black
+  );
+  --btn-secondary-bg: #ece7e2;
+  --btn-secondary-bg-hover: #e2dbd4;
+  --btn-secondary-fg: var(--text-primary);
+  --btn-inverted-bg: var(--bg-inverse);
+  --btn-inverted-bg-hover: #2e2e2e;
+  --btn-disabled-bg: #e8e0d8;
+  --btn-disabled-fg: var(--text-disabled);
+
+  /* Typography scale extras */
+  --font-size-caption-xs: 0.625rem;
+
+  /* Focus / ring */
+  --ring: var(--color-brand-primary);
+
+  /* Status / feedback */
   --success: #15803d;
   --warning: #ca8a04;
-  --destructive: #b91c1c;
+  --destructive: #c62828;
+
+  /* Radius */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+  --radius-pill: 9999px;
+
+  /* shadcn-style semantic aliases */
+  --background: var(--bg-main);
+  --foreground: var(--text-primary);
+  --primary: var(--color-brand-primary);
+  --primary-foreground: var(--text-on-brand);
+  --secondary: var(--btn-secondary-bg);
+  --secondary-foreground: var(--btn-secondary-fg);
+  --accent: var(--color-brand-secondary);
+  --accent-foreground: var(--text-primary);
+  --muted: var(--bg-card-muted);
+  --muted-foreground: var(--text-muted);
+  --input: var(--border);
+  --card: var(--bg-card);
+  --card-foreground: var(--text-primary);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
+  --color-bg-main: var(--bg-main);
+  --color-bg-card: var(--bg-card);
+  --color-bg-card-muted: var(--bg-card-muted);
+  --color-bg-input: var(--bg-input);
+  --color-bg-hover: var(--bg-hover);
+  --color-bg-selected: var(--bg-selected);
+  --color-bg-inverse: var(--bg-inverse);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-text-placeholder: var(--text-placeholder);
+  --color-text-disabled: var(--text-disabled);
+  --color-text-on-brand: var(--text-on-brand);
+  --color-text-on-inverse: var(--text-on-inverse);
+
+  --color-brand: var(--brand);
+  --color-brand-secondary: var(--brand-secondary);
+  --color-brand-tertiary: var(--brand-tertiary);
+
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
   --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
   --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
   --color-success: var(--success);
   --color-warning: var(--warning);
   --color-destructive: var(--destructive);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  --color-btn-primary: var(--btn-primary-bg);
+  --color-btn-primary-hover: var(--btn-primary-bg-hover);
+  --color-btn-secondary: var(--btn-secondary-bg);
+  --color-btn-secondary-hover: var(--btn-secondary-bg-hover);
+  --color-btn-secondary-fg: var(--btn-secondary-fg);
+  --color-btn-inverted: var(--btn-inverted-bg);
+  --color-btn-inverted-hover: var(--btn-inverted-bg-hover);
+  --color-btn-disabled: var(--btn-disabled-bg);
+  --color-btn-disabled-fg: var(--btn-disabled-fg);
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-pill: var(--radius-pill);
+
+  --text-caption-xs: var(--font-size-caption-xs);
+  --font-sans: var(--font-plus-jakarta-sans);
+  --font-display: var(--font-playfair-display);
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply font-sans;
+  }
+
+  body {
+    @apply bg-bg-main text-text-primary antialiased;
+  }
+}
+
+@layer utilities {
+  /* Headings — Playfair Display (branding & emotion) */
+  .type-display {
+    @apply font-display text-5xl leading-[1.08] font-medium tracking-tight sm:text-6xl lg:text-7xl;
+  }
+
+  .type-h1 {
+    @apply font-display text-4xl leading-[1.12] font-medium tracking-tight sm:text-5xl;
+  }
+
+  .type-h2 {
+    @apply font-display text-3xl leading-snug font-medium tracking-tight sm:text-4xl;
+  }
+
+  .type-h3 {
+    @apply font-display text-2xl leading-snug font-medium tracking-tight sm:text-3xl;
+  }
+
+  .type-title {
+    @apply font-display text-xl leading-snug font-medium tracking-tight;
+  }
+
+  /* Body / UI — Plus Jakarta Sans (UX & readability) */
+  .type-body {
+    @apply font-sans text-base leading-relaxed font-normal sm:text-lg;
+  }
+
+  .type-body-strong {
+    @apply font-sans text-base leading-relaxed font-medium sm:text-lg;
+  }
+
+  .type-label {
+    @apply font-sans text-sm leading-tight font-medium;
+  }
+
+  .type-caption {
+    @apply font-sans text-xs leading-tight font-medium;
+  }
+
+  .type-caption-xs {
+    @apply text-caption-xs font-sans leading-[1.15] font-medium;
+  }
+
+  .type-overline {
+    @apply font-sans text-xs leading-none font-semibold tracking-[0.12em] uppercase;
+  }
 }

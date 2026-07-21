@@ -1,29 +1,34 @@
+import Link from "next/link";
+
+import { buttonVariants } from "@/components/ui/Button";
+import { Heading } from "@/components/ui/Heading";
+import { Paragraph } from "@/components/ui/Paragraph";
+import { cn } from "@/lib/utils";
+
 export default function HomePage() {
   return (
     <main className="mx-auto flex min-h-screen w-full max-w-3xl flex-col justify-center gap-6 px-6 py-16">
-      <p className="text-muted-foreground text-sm font-medium tracking-wide uppercase">
-        Personalized gifting
-      </p>
-      <h1 className="text-foreground text-4xl font-semibold tracking-tight sm:text-5xl">
-        Gift Wagera
-      </h1>
-      <p className="text-muted-foreground max-w-xl text-lg">
+      <Heading variant="overline" className="text-text-muted">
+        Personalized Gifting
+      </Heading>
+      <Heading variant="display">Gift Wagera</Heading>
+      <Paragraph className="max-w-xl" tone="secondary" variant="body">
         Buy individual gifts or build a custom bundle — box, products, wrapping,
         add-ons, and a personal message.
-      </p>
+      </Paragraph>
       <div className="flex flex-wrap gap-3 pt-2">
-        <a
+        <Link
           href="/products"
-          className="bg-primary text-primary-foreground inline-flex items-center justify-center rounded-md px-5 py-2.5 text-sm font-medium transition-opacity hover:opacity-90"
+          className={cn(buttonVariants({ variant: "primary", size: "md" }))}
         >
-          Browse gifts
-        </a>
-        <a
+          Browse Gifts
+        </Link>
+        <Link
           href="/build-a-bundle"
-          className="border-border bg-background text-foreground hover:bg-muted inline-flex items-center justify-center rounded-md border px-5 py-2.5 text-sm font-medium transition-colors"
+          className={cn(buttonVariants({ variant: "outlined", size: "md" }))}
         >
-          Build a bundle
-        </a>
+          Build A Bundle
+        </Link>
       </div>
     </main>
   );

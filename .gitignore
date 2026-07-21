@@ -43,6 +43,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# local agent guidance (keep private)
+# local agent guidance (keep private / internal only)
 AGENTS.md
 /doc/
